@@ -1,0 +1,31 @@
+.centered {
+  margin: 0 auto;
+}
+
+.width-col-xs-6 {
+  width: 50%;
+}
+.create-item-btn-menu {
+  margin-top: 8px;
+}
+.create-user {
+  margin-right: 10px;
+}
+
+form.create-books-form {
+  textarea {
+    resize: vertical;
+  }
+}
+
+a.cancel-btn {
+  margin-right: 10px;
+}
+
+img.user-avatar {
+  max-width: 300px;
+}
+
+.delete-user, .delete-book {
+  margin-left: 10px;
+}

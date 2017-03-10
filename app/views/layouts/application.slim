@@ -1,0 +1,54 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="Library" name="description" /
+    meta content="Vladislav Beliaiev" name="author" /
+    title Library
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag('favicon.png')
+    link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" /
+    link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css" /
+  body
+    nav.navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          = link_to 'Library', root_path, class:'navbar-brand'
+        #navbar.navbar-collapse.collapse
+          - if current_admin
+            ul.nav.navbar-nav
+              li class = "#{menu_item_class('welcome')}"
+                = link_to 'Home', root_path
+              li class = "#{menu_item_class('users')}"
+                =link_to 'Users', users_path
+              li class = "#{menu_item_class('all_books')}"
+                =link_to 'Books', books_path(status: 'all')
+              li class = "#{menu_item_class('available_books')}"
+                = link_to 'Available Books', books_path(status:'available')
+              li class = "#{menu_item_class('unavailable_books')}"
+                = link_to 'Unavailable Books', books_path(status:'unavailable')
+          ul.nav.navbar-nav.pull-right
+            - if current_admin
+              = link_to 'Take Book',
+                      new_take_book_receptions_path,
+                      class: 'btn btn-info pull-left create-item-btn-menu create-user'
+
+              = link_to 'Return Book',
+                      new_return_book_receptions_path,
+                      class: 'btn btn-info pull-left create-item-btn-menu create-user'
+
+              = link_to 'Create User', new_user_path, class: 'btn btn-success pull-left create-item-btn-menu create-user'
+              = link_to 'Create Book', new_book_path, class: 'btn btn-success pull-left create-item-btn-menu'
+              li
+                = link_to 'Log Out', logout_path
+            - else
+              li
+                = link_to 'Log In', login_path
+    .container.theme-showcase.main-container
+      .row
+        = flash_messages
+      = yield

@@ -1,0 +1,21 @@
+.row
+  h2.text-center Books
+  .col-xs-4.text-center
+    h4 Total count
+    h2.text-info = @welcome_stat.books_count
+  .col-xs-4.text-center
+    h4 Available books
+    h2.text-success = @welcome_stat.available_books_count
+  .col-xs-4.text-center
+    h4 Unavailable Books
+    h2.text-danger = @welcome_stat.unvailable_books_count
+  hr
+hr
+.row
+  h2.text-center Users
+  .col-xs-6.text-center
+    h4 Total count:
+    h2.text-info = @welcome_stat.users_count
+  .col-xs-6.text-center
+    h4 Users with books:
+    h2.text-success = @welcome_stat.user_with_books

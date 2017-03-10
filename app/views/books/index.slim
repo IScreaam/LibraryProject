@@ -1,0 +1,32 @@
+.row
+  h2 Books:
+  - if @books.present?
+    table.table.table-striped
+      thead
+        tr
+          th Id
+          th Name
+          th Author Name
+          th User
+          th Status
+          th
+      tbody
+        - @books.each do |book|
+          tr
+            td = book.id
+            td = link_to book.name, book_path(book)
+            td = book.author_name
+            td
+              - if book.unavailable? && book.user.present?
+                = link_to book.user.first_name, user_path(book.user)
+            td = book.status.humanize
+            td
+              = link_to '', edit_book_path(book), class:'glyphicon glyphicon-pencil'
+              - if book.available?
+                = link_to '',
+                        book_path(book),
+                        method: :delete,
+                        'data-confirm' => 'Are you sure?',
+                        class: 'glyphicon glyphicon-trash delete-book'
+  - else
+    h4.text-center There are no books yet

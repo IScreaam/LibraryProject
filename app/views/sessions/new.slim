@@ -1,0 +1,6 @@
+.row.text-center
+  h1.text-center Sign in
+  = bootstrap_form_tag url: sessions_path, method: :post, html: { class: 'width-col-xs-6  centered' } do |f|
+    = f.email_field :email, label: 'Email', placeholder: 'Email', label_class: 'pull-left'
+    = f.password_field :password, label: 'Password', placeholder: 'Password', label_class: 'pull-left'
+    = f.submit 'Sign in', class: 'btn btn-success col-xs-12 '

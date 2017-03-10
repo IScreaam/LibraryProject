@@ -1,0 +1,8 @@
+= bootstrap_form_for @user, html: {class: 'width-col-xs-6  centered'}, multipart: true do |f|
+  = f.text_field :first_name, placeholder: 'First name', minlength: 2, maxlength: 255
+  = f.text_field :last_name, placeholder: 'Last name', minlength: 2, maxlength: 255
+  = f.text_field :email, placeholder: 'Email', minlength: 2, maxlength: 255
+  = f.fields_for :picture do |pic|
+    = pic.file_field :picture, label: 'Avatar'
+  = link_to 'Cancel', users_path, class: 'btn btn-danger cancel-btn'
+  = f.submit class: 'btn btn-success'

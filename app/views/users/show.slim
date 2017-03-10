@@ -1,0 +1,26 @@
+.row
+  .user-info.text-center
+    - if @user.has_avatar?
+      = image_tag @user.avatar_url, class: 'user-avatar'
+    h2 = @user.full_name
+    h4
+      i = @user.email
+  hr
+  .taken_books
+    h2.text-center Taken book(s):
+    - if @user.books.present?
+      table.table.table-striped
+        thead
+          tr
+            th Id
+            th Name
+            th Author Name
+        tbody
+          - @user.books.each do |book|
+            tr
+              td = book.id
+              td = link_to book.name, book_path(book)
+              td = book.author_name
+    - else
+      h4.text-center
+        i No taken books

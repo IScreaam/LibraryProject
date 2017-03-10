@@ -1,0 +1,6 @@
+.row
+  h2.text-center Return a book
+  = bootstrap_form_tag url: return_book_receptions_path, html: { class: 'width-col-xs-6  centered' } do |f|
+    = f.select :book_id, @books, {}, { class: 'js-select-books' }
+    = link_to 'Cancel', users_path, class: 'btn btn-danger cancel-btn'
+    = f.submit class: 'btn btn-success'

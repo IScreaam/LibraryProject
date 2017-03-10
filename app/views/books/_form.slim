@@ -1,0 +1,6 @@
+= bootstrap_form_for @book, html: {class: 'width-col-xs-6 centered create-book-form'} do |f|
+  = f.text_field :name, placeholder: 'Book name', minlength: 2, maxlength: 255
+  = f.text_field :author_name, placeholder: 'Author name', minlength: 2, maxlength: 255
+  = f.text_area :description, placeholder: 'Book description', minlength: 10, maxlength: 6555
+  = link_to 'Cancel', books_path, class: 'btn btn-danger cancel-btn'
+  = f.submit class: 'btn btn-success'
