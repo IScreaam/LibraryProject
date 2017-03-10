@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :edit, :destroy]
 
   def index
-    @users = User.includes(:books).order(:first_name)
+    @users = User.regular.includes(:books).order(:first_name)
   end
 
   def new
